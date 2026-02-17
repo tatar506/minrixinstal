@@ -4,195 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Скачать Minrix</title>
-    <!-- Подключаем пиксельный шрифт -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --mc-bg: #1a1a1a;
-            --mc-gray: #C6C6C6;
-            --mc-shadow: #373737;
-            --mc-highlight: #FFFFFF;
-            --mc-btn-hover: #a0a6b5;
-            --mc-green: #3fb950;
-        }
-
-        * {
-            box-sizing: border-box;
-            user-select: none;
+            --btn-bg: #757575;
+            --btn-border-light: #a8a8a8;
+            --btn-border-dark: #2b2b2b;
+            --btn-hover: #8f8f8f;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #050505;
-            /* Паттерн "Земля" через CSS градиент, чтобы не грузить картинки */
-            background-image: 
-                linear-gradient(45deg, #1c1c1c 25%, transparent 25%), 
-                linear-gradient(-45deg, #1c1c1c 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, #1c1c1c 75%), 
-                linear-gradient(-45deg, transparent 75%, #1c1c1c 75%);
-            background-size: 40px 40px;
-            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-            font-family: 'VT323', monospace;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'VT323', monospace;
             overflow: hidden;
+            
+            /* ФОН - ТЕКСТУРА ЗЕМЛИ */
+            background-color: #382c1f;
+            background-image: url('https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.19/assets/minecraft/textures/block/dirt.png');
+            background-size: 64px 64px;
+            image-rendering: pixelated;
         }
 
-        /* Эффект виньетки (затемнение по краям) */
-        .vignette {
+        /* Затемнение по краям */
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, transparent 50%, black 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.9) 100%);
             pointer-events: none;
-            z-index: 1;
         }
 
-        /* Главное окно в стиле GUI Майнкрафта */
-        .mc-container {
+        .menu-container {
             position: relative;
-            z-index: 2;
-            background-color: var(--mc-gray);
-            width: 90%;
-            max-width: 500px;
-            padding: 4px;
-            /* Характерная рамка майнкрафта */
-            box-shadow: 
-                inset 4px 4px 0px var(--mc-highlight),
-                inset -4px -4px 0px var(--mc-shadow),
-                4px 4px 0px #000;
+            z-index: 10;
             text-align: center;
-            image-rendering: pixelated;
-        }
-
-        .content-box {
-            padding: 2rem;
-            border: 2px solid #8b8b8b;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: #3f3f3f;
-            text-shadow: 2px 2px 0px #fff;
-            margin-bottom: 10px;
+            font-size: 6rem;
+            margin: 0 0 10px 0;
+            color: #dedede;
+            text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 4px 4px 0px #3f3f3f, 6px 6px 0px #000;
+            animation: float 4s ease-in-out infinite;
         }
 
-        p.desc {
+        .subtitle {
             font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 30px;
+            color: #FFFF55;
+            text-shadow: 2px 2px 0 #3f3f3f;
+            margin-bottom: 50px;
+            transform: rotate(-5deg);
+            animation: pulse 1s infinite alternate;
         }
 
-        /* Иконка папки */
-        .icon-pixel {
-            font-size: 80px;
-            margin-bottom: 10px;
+        /* Стиль кнопки Minecraft */
+        .mc-button {
             display: block;
-        }
-
-        /* Кнопка в стиле Minecraft */
-        .mc-btn {
-            display: inline-block;
-            background-color: var(--mc-gray);
-            color: #202020;
-            font-size: 2rem;
-            text-decoration: none;
-            padding: 10px 40px;
             width: 100%;
+            padding: 15px 0;
+            background-color: var(--btn-bg);
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            text-decoration: none;
             cursor: pointer;
-            position: relative;
-            /* Рамка кнопки */
-            box-shadow: 
-                inset 3px 3px 0px var(--mc-highlight),
-                inset -3px -3px 0px var(--mc-shadow),
-                2px 2px 0px #000;
-            transition: background 0.1s;
+            text-align: center;
+            border: 2px solid #000;
+            border-top-color: var(--btn-border-light);
+            border-left-color: var(--btn-border-light);
+            border-bottom-color: var(--btn-border-dark);
+            border-right-color: var(--btn-border-dark);
+            text-shadow: 2px 2px 0px #202020;
         }
 
-        .mc-btn:hover {
-            background-color: #d6d6d6;
-            text-shadow: 1px 1px 0 #fff;
+        .mc-button:hover {
+            background-color: var(--btn-hover);
+            color: #ffffa0;
+            border-top-color: #cfcfcf;
+            border-left-color: #cfcfcf;
         }
 
-        .mc-btn:active {
-            background-color: #8b8b8b;
-            box-shadow: 
-                inset 3px 3px 0px var(--mc-shadow),
-                inset -3px -3px 0px var(--mc-highlight);
+        .mc-button:active {
+            border-top-color: var(--btn-border-dark);
+            border-left-color: var(--btn-border-dark);
+            border-bottom-color: var(--btn-border-light);
+            border-right-color: var(--btn-border-light);
+            background-color: #5e5e5e;
             transform: translateY(2px);
         }
 
-        .file-meta {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            color: #555;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-        }
-
-        .footer {
-            margin-top: 25px;
-            font-size: 1.2rem;
-        }
-
-        .footer a {
-            color: #333;
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
-        }
-
-        .footer a:hover {
-            color: #000;
-            border-bottom: 2px solid #000;
-        }
-
-        /* Анимация названия */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-            display: inline-block;
-        }
 
+        @keyframes pulse {
+            from { transform: scale(1) rotate(-5deg); }
+            to { transform: scale(1.1) rotate(-5deg); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="vignette"></div>
+    <div class="overlay"></div>
 
-    <div class="mc-container">
-        <div class="content-box">
-            <span class="icon-pixel">📦</span>
-            <h1 class="floating">MINRIX</h1>
-            <p class="desc">Official Resource Pack</p>
+    <div class="menu-container">
+        <h1>MINRIX</h1>
+        <div class="subtitle">Best Folder Pack!</div>
 
-            <!-- Кнопка скачивания -->
-            <a href="minrix.zip" class="mc-btn" download>
-                СКАЧАТЬ ФАЙЛЫ
-            </a>
-
-            <div class="file-meta">
-                <span>Type: Folder/Zip</span>
-                <span>Ver: Latest</span>
-            </div>
-
-            <div class="footer">
-                <a href="https://github.com/" target="_blank">> View on GitHub <</a>
-            </div>
-        </div>
+        <!-- Единственная кнопка -->
+        <a href="https://drive.google.com/uc?export=download&id=1v4QQuMyn_63HoMC-YHEP_1NHOGy3acRQ" class="mc-button">
+            Скачать Pack
+        </a>
     </div>
 
 </body>
