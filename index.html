@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скачать Minrix</title>
+    <title>Скачать Minrix 2.0</title>
+    <!-- Шрифт Minecraft -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --btn-bg: #757575;
-            --btn-border-light: #a8a8a8;
-            --btn-border-dark: #2b2b2b;
+            --btn-bg: #7c7c7c;
+            --btn-border-light: #c6c6c6;
+            --btn-border-dark: #373737;
             --btn-hover: #8f8f8f;
         }
 
@@ -31,83 +32,96 @@
             image-rendering: pixelated;
         }
 
-        /* Затемнение по краям */
+        /* Виньетка (затемнение углов) */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.9) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.9) 100%);
             pointer-events: none;
+            z-index: 1;
         }
 
+        /* Контейнер по центру */
         .menu-container {
             position: relative;
             z-index: 10;
             text-align: center;
             width: 100%;
-            max-width: 400px;
-            padding: 20px;
+            max-width: 600px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
+        /* Заголовок MINRIX */
         h1 {
-            font-size: 6rem;
-            margin: 0 0 10px 0;
+            font-size: 7rem;
+            margin: 0;
             color: #dedede;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 4px 4px 0px #3f3f3f, 6px 6px 0px #000;
+            letter-spacing: 4px;
+            line-height: 1;
+            /* Жесткая тень */
+            text-shadow: 
+                4px 4px 0px #3f3f3f,
+                6px 6px 0px #1a1a1a;
+            
             animation: float 4s ease-in-out infinite;
         }
 
+        /* Желтый текст (Splash) - ОБНОВЛЕНИЕ 2.0 */
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             color: #FFFF55;
-            text-shadow: 2px 2px 0 #3f3f3f;
-            margin-bottom: 50px;
-            transform: rotate(-5deg);
-            animation: pulse 1s infinite alternate;
+            text-shadow: 3px 3px 0 #3f3f3f;
+            margin-bottom: 40px;
+            margin-left: 200px; /* Сдвиг вправо */
+            transform: rotate(-20deg);
+            animation: pulse 0.5s infinite alternate;
         }
 
-        /* Стиль кнопки Minecraft */
+        /* КНОПКА СКАЧИВАНИЯ */
         .mc-button {
             display: block;
-            width: 100%;
+            width: 80%;
             padding: 15px 0;
             background-color: var(--btn-bg);
             color: #e0e0e0;
-            font-size: 1.8rem;
+            font-size: 2rem;
             text-decoration: none;
             cursor: pointer;
             text-align: center;
+            
+            /* 3D рамка */
             border: 2px solid #000;
             border-top-color: var(--btn-border-light);
             border-left-color: var(--btn-border-light);
             border-bottom-color: var(--btn-border-dark);
             border-right-color: var(--btn-border-dark);
+            
             text-shadow: 2px 2px 0px #202020;
         }
 
         .mc-button:hover {
-            background-color: var(--btn-hover);
+            background-color: #8c8c8c;
             color: #ffffa0;
-            border-top-color: #cfcfcf;
-            border-left-color: #cfcfcf;
+            border-top-color: #e0e0e0;
+            border-left-color: #e0e0e0;
         }
 
         .mc-button:active {
+            background-color: #555;
             border-top-color: var(--btn-border-dark);
             border-left-color: var(--btn-border-dark);
             border-bottom-color: var(--btn-border-light);
             border-right-color: var(--btn-border-light);
-            background-color: #5e5e5e;
-            transform: translateY(2px);
+            transform: translateY(4px);
         }
 
+        /* Анимации */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -115,8 +129,8 @@
         }
 
         @keyframes pulse {
-            from { transform: scale(1) rotate(-5deg); }
-            to { transform: scale(1.1) rotate(-5deg); }
+            from { transform: scale(1) rotate(-20deg); }
+            to { transform: scale(1.1) rotate(-20deg); }
         }
     </style>
 </head>
@@ -126,11 +140,12 @@
 
     <div class="menu-container">
         <h1>MINRIX</h1>
-        <div class="subtitle">Best Folder Pack!</div>
+        <!-- Желтая надпись -->
+        <div class="subtitle">Update 2.0!</div>
 
-        <!-- Единственная кнопка -->
-        <a href="https://drive.google.com/uc?export=download&id=1v4QQuMyn_63HoMC-YHEP_1NHOGy3acRQ" class="mc-button">
-            Скачать Pack
+        <!-- НОВАЯ ССЫЛКА НА GOOGLE DRIVE -->
+        <a href="https://drive.google.com/uc?export=download&id=1aBMYmcyXVT1TvRywuv_wTL4V1FlboNwn" class="mc-button">
+            СКАЧАТЬ MINRIX 2.0
         </a>
     </div>
 
