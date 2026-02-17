@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать Minrix</title>
+    <!-- Подключаем пиксельный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --mc-bg: #1a1a1a;
+            --mc-gray: #C6C6C6;
+            --mc-shadow: #373737;
+            --mc-highlight: #FFFFFF;
+            --mc-btn-hover: #a0a6b5;
+            --mc-green: #3fb950;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            /* Паттерн "Земля" через CSS градиент, чтобы не грузить картинки */
+            background-image: 
+                linear-gradient(45deg, #1c1c1c 25%, transparent 25%), 
+                linear-gradient(-45deg, #1c1c1c 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #1c1c1c 75%), 
+                linear-gradient(-45deg, transparent 75%, #1c1c1c 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            font-family: 'VT323', monospace;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Эффект виньетки (затемнение по краям) */
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 50%, black 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Главное окно в стиле GUI Майнкрафта */
+        .mc-container {
+            position: relative;
+            z-index: 2;
+            background-color: var(--mc-gray);
+            width: 90%;
+            max-width: 500px;
+            padding: 4px;
+            /* Характерная рамка майнкрафта */
+            box-shadow: 
+                inset 4px 4px 0px var(--mc-highlight),
+                inset -4px -4px 0px var(--mc-shadow),
+                4px 4px 0px #000;
+            text-align: center;
+            image-rendering: pixelated;
+        }
+
+        .content-box {
+            padding: 2rem;
+            border: 2px solid #8b8b8b;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #3f3f3f;
+            text-shadow: 2px 2px 0px #fff;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p.desc {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Иконка папки */
+        .icon-pixel {
+            font-size: 80px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Кнопка в стиле Minecraft */
+        .mc-btn {
+            display: inline-block;
+            background-color: var(--mc-gray);
+            color: #202020;
+            font-size: 2rem;
+            text-decoration: none;
+            padding: 10px 40px;
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            /* Рамка кнопки */
+            box-shadow: 
+                inset 3px 3px 0px var(--mc-highlight),
+                inset -3px -3px 0px var(--mc-shadow),
+                2px 2px 0px #000;
+            transition: background 0.1s;
+        }
+
+        .mc-btn:hover {
+            background-color: #d6d6d6;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        .mc-btn:active {
+            background-color: #8b8b8b;
+            box-shadow: 
+                inset 3px 3px 0px var(--mc-shadow),
+                inset -3px -3px 0px var(--mc-highlight);
+            transform: translateY(2px);
+        }
+
+        .file-meta {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .footer a:hover {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Анимация названия */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="vignette"></div>
+
+    <div class="mc-container">
+        <div class="content-box">
+            <span class="icon-pixel">📦</span>
+            <h1 class="floating">MINRIX</h1>
+            <p class="desc">Official Resource Pack</p>
+
+            <!-- Кнопка скачивания -->
+            <a href="minrix.zip" class="mc-btn" download>
+                СКАЧАТЬ ФАЙЛЫ
+            </a>
+
+            <div class="file-meta">
+                <span>Type: Folder/Zip</span>
+                <span>Ver: Latest</span>
+            </div>
+
+            <div class="footer">
+                <a href="https://github.com/" target="_blank">> View on GitHub <</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
